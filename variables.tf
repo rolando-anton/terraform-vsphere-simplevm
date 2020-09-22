@@ -103,17 +103,7 @@ variable "network_type" {
   default     = null
 }
 
-variable "wait_for_guest_net_routable" {
-  description = "Controls whether or not the guest network waiter waits for a routable address. When false, the waiter does not wait for a default gateway, nor are IP addresses checked against any discovered default gateways as part of its success criteria. This property is ignored if the wait_for_guest_ip_timeout waiter is used."
-  type        = bool
-  default     = true
-}
 
-variable "wait_for_guest_ip_timeout" {
-  description = "The amount of time, in minutes, to wait for an available guest IP address on this virtual machine. This should only be used if your version of VMware Tools does not allow the wait_for_guest_net_timeout waiter to be used. A value less than 1 disables the waiter."
-  type        = number
-  default     = 0
-}
 
 variable "wait_for_guest_net_timeout" {
   description = "The amount of time, in minutes, to wait for an available IP address on this virtual machine's NICs. Older versions of VMware Tools do not populate this property. In those cases, this waiter can be disabled and the wait_for_guest_ip_timeout waiter can be used instead. A value less than 1 disables the waiter."
@@ -207,9 +197,4 @@ variable "wait_for_guest_ip_timeout" {
   default     = 0
 }
 
-variable "wait_for_guest_net_timeout" {
-  description = "The amount of time, in minutes, to wait for an available IP address on this virtual machine's NICs. Older versions of VMware Tools do not populate this property. In those cases, this waiter can be disabled and the wait_for_guest_ip_timeout waiter can be used instead. A value less than 1 disables the waiter."
-  type        = number
-  default     = 5
-}
 
