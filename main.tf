@@ -53,8 +53,9 @@ resource "vsphere_virtual_machine" "vm" {
   datastore_id         = var.datastore != "" ? data.vsphere_datastore.datastore[0].id : null
   num_cpus               = var.cpu_number
   memory                 = var.ram_size
-  wait_for_guest_net_timeout  = 0
-  wait_for_guest_net_routable = false
+  wait_for_guest_net_routable = var.wait_for_guest_net_routable
+  wait_for_guest_ip_timeout   = var.wait_for_guest_ip_timeout
+  wait_for_guest_net_timeout  = var.wait_for_guest_net_timeout
   nested_hv_enabled           = var.nested_hv_enabled
   force_power_off             = true
   depends_on                  = [var.vm_depends_on]
